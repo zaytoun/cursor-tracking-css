@@ -6,8 +6,6 @@ import urllib.parse
 from bs4 import BeautifulSoup
 
 def generate_css(path, duration=100, keyframe_count=100):
-	'''
-	'''
 	inject_template_tag(path)
 
 	with open(path, 'r') as f:
@@ -24,17 +22,12 @@ def generate_css(path, duration=100, keyframe_count=100):
 			f.write(generate_hover_rule(selector))
 
 def generate_hover_rule(selector):
-	'''
-	'''
 	return '{selector}:hover {{ -webkit-animation-play-state:running; -moz-animation-play-state:running; animation-play-state:running; }}\n'.format(selector=selector)
 
 def generate_animation_rule(selector, animation_name, duration):
-	'''
-	'''
 	return '{selector} {{ -moz-animation: {animation_name} {duration}s infinite; -webkit-animation: {animation_name} {duration}s infinite; animation: {animation_name} {duration}s infinite; -webkit-animation-play-state:paused; -moz-animation-play-state:paused; animation-play-state:paused; }}\n'.format(selector=selector, animation_name=animation_name, duration=duration)
 
 def generate_animation_keyframes(selector, animation_name, duration, keyframe_count):
-
 	keyframe_count = max(1, min(10000, keyframe_count))
 	step_size = 100.00 / keyframe_count
 	time_per_step = float(duration) / keyframe_count
@@ -51,8 +44,6 @@ def generate_animation_keyframes(selector, animation_name, duration, keyframe_co
 	return '@keyframes %s { %s }\n' % (animation_name, ' '.join(keyframes))
 
 def inject_template_tag(path):
-	'''
-	'''
 	with open(path, 'r') as f:
 		html = f.read()
 
@@ -65,8 +56,6 @@ def inject_template_tag(path):
 		f.write(html)	
 
 def generate_tag_selectors(s, selectors, selector):
-	'''
-	'''
 	if getattr(s, 'name', None) == None:
 		return
 
