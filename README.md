@@ -23,6 +23,16 @@ Here I describe the method utilized here to accomplishing some degree of cursor 
 
 Install Packages: ` sudo pip install -r requirements.txt`
 
+Or use a virtual environment: 
+
+` virtualenv -p python3 venv `
+
+` source venv/bin/activate `
+
+` pip install -r requirements.txt `
+
+
+
 Place target html page in the html directory and name it `index.html`
 
 `python tracker.py html/index.html` will produce a `tracker.css` file in `static/css`
