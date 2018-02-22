@@ -1,4 +1,5 @@
 import sys
+import os
 import string
 import random
 import hashlib
@@ -13,6 +14,9 @@ def generate_css(path, duration=100, keyframe_count=100):
 
 	selectors = []
 	generate_tag_selectors(soup, selectors, '')
+
+	if not os.path.exists('./static/css/'):
+	    os.makedirs('./static/css/')
 
 	with open('static/css/tracker.css', 'w') as f:
 		for selector in selectors:
